@@ -11,18 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import OPTIONS
-if os.path.exists('env.py'):
+import os 
+
+os.path.exists('env.py'):
     import env
-
-
-CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL' :os.environ.get('CLOUDINARY_URL')
-}
-
-MEDIA_URL = '/media/'
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,12 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@mvar&9k7c7m_x9qx4cozd)$-@^6^x3y_y@99ncr_1aiv!$i7m'
+SECRET_KEY = 'django-insecure-@-vqdvb78&67e-o*w4!0*(am2t9vzymtkozb+b(=2u_-nwin+0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+}
+
+MEDIA_URL = '/media/'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Application definition
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
 
+    'profiles',
 ]
 
 MIDDLEWARE = [
