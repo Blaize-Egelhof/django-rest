@@ -1,2 +1,2 @@
 release: python manage.py makemigrations && python manage.py migrate
-web: gunicorn django-rest.wsgi
+web: gunicorn api-practice.wsgi
