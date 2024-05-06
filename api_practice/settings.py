@@ -63,7 +63,7 @@ SECRET_KEY = 'SECRET_KEY'
 DEBUG = True
 # 'DEV' in os.environ
 
-ALLOWED_HOSTS = ["local", "https://p5-practice-6078ead39962.herokuapp.com/"]
+ALLOWED_HOSTS = ["local", "p5-practice-6078ead39962.herokuapp.com"]
 
 
 # Application definition
