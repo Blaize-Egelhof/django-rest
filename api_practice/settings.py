@@ -63,7 +63,7 @@ SECRET_KEY = 'SECRET_KEY'
 DEBUG = True
 # 'DEV' in os.environ
 
-ALLOWED_HOSTS = ["local", "p5-practice-6078ead39962.herokuapp.com"]
+ALLOWED_HOSTS = ["local", "p5-practice-6078ead39962.herokuapp.com", '8000-blaizeegelho-djangorest-uvpryg8ide9.ws-eu111.gitpod.io']
 
 
 # Application definition
@@ -88,8 +88,8 @@ INSTALLED_APPS = [
     'profiles',
     'posts',
     'comments',
-    'likes',
     'follower',
+    'likes',
     'dj_rest_auth.registration',
     'corsheaders',
 ]
