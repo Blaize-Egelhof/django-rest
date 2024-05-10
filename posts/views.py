@@ -81,29 +81,26 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
-        comment_count=Count(
-            'comment',distinct=True
-        ),
-        likes_count=Count(
-            'likes',distinct=True
-
-        )
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
-
-    filter_backends =[
+    filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
-        DjangoFilterBackend
+        DjangoFilterBackend,
     ]
-
-    search_fields = ['owner__username', 'title']
-
-    filterset_fields = ['owner__profile', 'owner__followed__owner__profile', 'likes__owner__profile']
-    
-
-    ordering_fields =[
-        'comment_count',
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'likes__owner__profile',
+        'owner__profile',
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+    ]
+    ordering_fields = [
         'likes_count',
+        'comments_count',
         'likes__created_at',
     ]
 
@@ -118,11 +115,6 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(
-        comment_count=Count(
-            'comment',distinct=True
-        ),
-        likes_count=Count(
-            'likes',distinct=True
-
-        )
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
